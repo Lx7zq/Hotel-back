@@ -9,6 +9,11 @@ const db = require('./models');
 const role = db.Role;
 const cors = require("cors");
 
+const corsOption = {
+    origin: ['https://hotel-font.vercel.app', 'http://localhost:5173'], // อนุญาตหลาย origin
+    credentials: true, // หากใช้ cookies หรือ tokens
+};
+
 // เชื่อมต่อฐานข้อมูลและซิงค์โมเดล
 // db.sequelize.sync({ alter: true })
 //     .then(() => {
@@ -34,7 +39,7 @@ const initRole = async () => {
 // ใช้ middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors()); // เปิดใช้งาน CORS
+app.use(cors(corsOption)); // เปิดใช้งาน CORS
 
 // ใช้ router
 app.use('/api/rooms', roomRoutes);
