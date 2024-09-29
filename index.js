@@ -9,9 +9,10 @@ const db = require('./models');
 const role = db.Role;
 const cors = require("cors");
 
+const fronend_url = process.env.FRONTEND_URL;
+
 const corsOption = {
-    origin: ['https://hotel-font.vercel.app', 'http://localhost:5173'], // อนุญาตหลาย origin
-    credentials: true, // หากใช้ cookies หรือ tokens
+    origin: fronend_url,
 };
 
 // เชื่อมต่อฐานข้อมูลและซิงค์โมเดล
